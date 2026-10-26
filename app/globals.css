@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/*
+ * Airmail: envelope paper, navy ink, the red and blue of an airmail border,
+ * and postmark-style stamps for each server the message passed through.
+ */
+@theme inline {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@theme {
+  --color-envelope: #f8f4ea;
+  --color-card: #fffdf8;
+  --color-navy: #1b2a4a;
+  --color-airmail-red: #c8383a;
+  --color-airmail-blue: #2a5aa8;
+  --color-postmark: #6b5b4b;
+  --color-rule: #e4dccb;
+  --color-pass: #2f7d4f;
+  --color-caution: #b7791f;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-envelope);
+  color: var(--color-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Base resets belong in @layer base. An unlayered `a { color }` or
+ * `button { font }` outranks every Tailwind utility and silently kills text
+ * colours on links and font sizes on controls.
+ */
+@layer base {
+  a {
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: #f6d7d7;
+  }
+}
+
+/* The striped border of an airmail envelope. */
+.airmail {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-airmail-red) 0 14px,
+    var(--color-envelope) 14px 22px,
+    var(--color-airmail-blue) 22px 36px,
+    var(--color-envelope) 36px 44px
+  );
+}
